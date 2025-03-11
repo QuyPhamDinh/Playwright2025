@@ -1,14 +1,9 @@
-import test, { expect, Locator } from "@playwright/test";
-import { CookiesOverlay } from "./pom/CookiesOverlay";
-import { AutoCompleteBindingPage } from "./pom/AutoCompleteBindingPage";
+import { test } from "./fixture";
+import { expect } from "@playwright/test";
 
-test("AutoComplete binding", async ({ page }) => {
-  const autoCompleteBindingPage = new AutoCompleteBindingPage(page);
-  const cookiesOverlay = new CookiesOverlay(page);
-  await cookiesOverlay.acceptCookies();
-
+test("AutoComplete binding", async ({ autocompletePage }) => {
   const inputText = "Ar";
-  await autoCompleteBindingPage.typeInAutoComplete(inputText);
-  const itemFocus = await autoCompleteBindingPage.getItemFocused();
+  await autocompletePage.typeInAutoComplete(inputText);
+  const itemFocus = await autocompletePage.getItemFocused();
   expect(await itemFocus.textContent()).toContain(inputText);
 });

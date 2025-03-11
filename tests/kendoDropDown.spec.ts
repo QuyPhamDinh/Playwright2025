@@ -1,6 +1,5 @@
-import test, { chromium, expect } from "@playwright/test";
-import { AngularDropDownPage } from "./pom/AngularDropDownPage";
-import { CookiesOverlay } from "./pom/CookiesOverlay";
+import { test } from "./fixture";
+import { expect } from "@playwright/test";
 
 test("Kendo dropdown", async ({ page }) => {
   await page.goto(
@@ -22,14 +21,9 @@ test("Kendo dropdown", async ({ page }) => {
   await dropdown.click();
 });
 
-test("Kendo dropdown POM", async ({ page }) => {
-  const angularDropDownPage = new AngularDropDownPage(page);
-
-  const cookiesOverlay = new CookiesOverlay(page);
-  await cookiesOverlay.acceptCookies();
-
-  await angularDropDownPage.clickDropdown();
+test("Kendo dropdown POM", async ({ angularDropdownPage }) => {
+  await angularDropdownPage.clickDropdown();
   const expectedItem = "Tennis";
-  await angularDropDownPage.selectDropDownItems(expectedItem);
-  expect(await angularDropDownPage.getSelectedValue()).toBe(expectedItem);
+  await angularDropdownPage.selectDropDownItems(expectedItem);
+  expect(await angularDropdownPage.getSelectedValue()).toBe(expectedItem);
 });
