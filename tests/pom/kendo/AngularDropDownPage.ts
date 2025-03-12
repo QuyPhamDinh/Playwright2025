@@ -1,5 +1,5 @@
 import { Frame, FrameLocator, Locator, Page } from "@playwright/test";
-import { BasePage } from "./BasePage";
+import { BasePage } from "../BasePage";
 import { IFrame } from "./IFrame";
 
 export class AngularDropDownPage extends BasePage {

@@ -1,7 +1,7 @@
-import { AngularDropDownPage } from "./pom/AngularDropDownPage";
-import { AutoCompleteBindingPage } from "./pom/AutoCompleteBindingPage";
+import { AngularDropDownPage } from "./pom/kendo/AngularDropDownPage";
+import { AutoCompleteBindingPage } from "./pom/kendo/AutoCompleteBindingPage";
 import { test as base } from "@playwright/test";
-import { CookiesOverlay } from "./pom/CookiesOverlay";
+import { CookiesOverlay } from "./pom/kendo/CookiesOverlay";
 
 type MyFixture = {
   angularDropdownPage: AngularDropDownPage;
