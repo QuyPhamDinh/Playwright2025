@@ -3,11 +3,13 @@ import { AutoCompleteBindingPage } from "./pom/kendo/AutoCompleteBindingPage";
 import { test as base } from "@playwright/test";
 import { CookiesOverlay } from "./pom/kendo/CookiesOverlay";
 import { AnimatedButtonPage } from "./pom/uitestingplayground/AnimatedButtonPage";
+import { AlertPage } from "./pom/uitestingplayground/AlertPage";
 
 type MyFixture = {
   angularDropdownPage: AngularDropDownPage;
   autocompletePage: AutoCompleteBindingPage;
   animatedButtonPage: AnimatedButtonPage;
+  alertPage: AlertPage;
 };
 
 export const test = base.extend<MyFixture>({
@@ -26,5 +28,9 @@ export const test = base.extend<MyFixture>({
   animatedButtonPage: async ({ page }, use) => {
     const animatedButtonPage = new AnimatedButtonPage(page);
     await use(animatedButtonPage);
+  },
+  alertPage: async ({ page }, use) => {
+    const alertPage = new AlertPage(page);
+    await use(alertPage);
   },
 });
