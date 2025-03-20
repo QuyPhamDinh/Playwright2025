@@ -5,6 +5,7 @@ import { CookiesOverlay } from "./pom/kendo/CookiesOverlay";
 import { AnimatedButtonPage } from "./pom/uitestingplayground/AnimatedButtonPage";
 import { AlertPage } from "./pom/uitestingplayground/AlertPage";
 import { GeoLocationPage } from "./pom/practiceExpandTesting/GeoLocationPage";
+import { ShahidHomePage } from "./pom/shahid/ShahidHomePage";
 
 type MyFixture = {
   angularDropdownPage: AngularDropDownPage;
@@ -12,6 +13,7 @@ type MyFixture = {
   animatedButtonPage: AnimatedButtonPage;
   alertPage: AlertPage;
   geolocationPage: GeoLocationPage;
+  shahidHomePage: ShahidHomePage;
 };
 
 export const test = base.extend<MyFixture>({
@@ -39,5 +41,10 @@ export const test = base.extend<MyFixture>({
   geolocationPage: async ({ page }, use) => {
     const geolocationPage = new GeoLocationPage(page);
     await use(geolocationPage);
+  },
+
+  shahidHomePage: async ({ page }, use) => {
+    const shahidHomePage = new ShahidHomePage(page);
+    await use(shahidHomePage);
   },
 });
