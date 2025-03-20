@@ -4,12 +4,14 @@ import { test as base } from "@playwright/test";
 import { CookiesOverlay } from "./pom/kendo/CookiesOverlay";
 import { AnimatedButtonPage } from "./pom/uitestingplayground/AnimatedButtonPage";
 import { AlertPage } from "./pom/uitestingplayground/AlertPage";
+import { GeoLocationPage } from "./pom/practiceExpandTesting/GeoLocationPage";
 
 type MyFixture = {
   angularDropdownPage: AngularDropDownPage;
   autocompletePage: AutoCompleteBindingPage;
   animatedButtonPage: AnimatedButtonPage;
   alertPage: AlertPage;
+  geolocationPage: GeoLocationPage;
 };
 
 export const test = base.extend<MyFixture>({
@@ -32,5 +34,10 @@ export const test = base.extend<MyFixture>({
   alertPage: async ({ page }, use) => {
     const alertPage = new AlertPage(page);
     await use(alertPage);
+  },
+
+  geolocationPage: async ({ page }, use) => {
+    const geolocationPage = new GeoLocationPage(page);
+    await use(geolocationPage);
   },
 });
